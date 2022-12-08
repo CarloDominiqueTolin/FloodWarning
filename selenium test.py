@@ -92,7 +92,7 @@ def getDailyTable(browser,targetData):
 
 
 if __name__ == "__main__":
-    browser = webdriver.Chrome(executable_path=r'C:\Users\luchT\Desktop\chromedriver_win32\chromedriver.exe')
+    browser = webdriver.Chrome()
     browser.get(pagasa_link+pages[0])
     
     resetDateInput(browser)
