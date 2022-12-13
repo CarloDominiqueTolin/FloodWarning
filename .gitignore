@@ -1,3 +1,7 @@
 venv
 chromedriver
 *pagasa.csv
+*pagasa.feather
+.vscode
+.ipynb_checkpoints/
+*.ipynb
