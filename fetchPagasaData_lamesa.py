@@ -155,14 +155,14 @@ def goToMonth(browser,targetDate):
 
     tmp_df = dataset.drop_duplicates()
     # feather.write_feather(tmp_df,f'{targetDate.year}_{targetDate.month}_pagasa.feather')
-    tmp_df.to_csv("data2.csv")
+    tmp_df.to_csv(f"{targetDate.year}_{targetDate.month}_pagasa.csv")
 
 if __name__ == "__main__":
     browser = webdriver.Chrome()
     browser.get(pagasa_link+pages[0])
     
     months = []
-    month = dt.datetime(2020,6,1)
+    month = dt.datetime(2018,12,1)
     #month = dt.datetime(2021,1,2)
     for i in range(100):
         months.append(month)
