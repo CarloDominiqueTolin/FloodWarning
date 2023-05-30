@@ -7,6 +7,7 @@ import pyarrow.feather as feather
 import pandas as pd
 import datetime as dt
 import calendar
+import time
 
 pagasa_link = 'http://121.58.193.173:8080/'
 pages = ['water/table.do','rainfall/table.do']
@@ -71,6 +72,7 @@ def incrementDay(browser):
 
     
 def getDailyTable(browser,targetData,headings = {'date':[],'time':[],'location':[],'waterLevel':[]}):
+    time.sleep(2)
     leftTable = browser.find_element(By.CLASS_NAME, "content-view-left").find_element(By.CLASS_NAME, "dataList")
     '''
     try:
@@ -152,15 +154,15 @@ def goToMonth(browser,targetDate):
             incrementDay(browser)
 
     tmp_df = dataset.drop_duplicates()
-    feather.write_feather(tmp_df,f'{targetDate.year}_{targetDate.month}_pagasa.feather')
-
+    # feather.write_feather(tmp_df,f'{targetDate.year}_{targetDate.month}_pagasa.feather')
+    tmp_df.to_csv("data2.csv")
 
 if __name__ == "__main__":
     browser = webdriver.Chrome()
     browser.get(pagasa_link+pages[0])
     
     months = []
-    month = dt.datetime(2018,3,26)
+    month = dt.datetime(2020,6,1)
     #month = dt.datetime(2021,1,2)
     for i in range(100):
         months.append(month)
